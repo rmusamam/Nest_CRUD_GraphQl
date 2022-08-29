@@ -3,6 +3,8 @@ import { isNullableType } from "graphql";
 import { GetUserArgs } from "src/users/dto/args/get-user.args";
 import { GetUsersArgs } from "src/users/dto/args/get-users.args";
 import { CreateUserInput } from "src/users/dto/input/create-user-input";
+import { DeleteUserInput } from "./dto/input/delete-user-input";
+import { UpdateUserInput } from "./dto/input/update-user-input";
 import { User } from "./models/user";
 import { UsersService } from "./users.service";
 
@@ -29,5 +31,10 @@ constructor(private readonly usersService:UsersService){}
     @Mutation(()=>User)
     updateUser(@Args('updateUserData') updateUserData:UpdateUserInput):User {
         return this.usersService.updateUser()
-    } 
+    }
+    
+    @Mutation(()=>User)
+    deleteUser(@Args('deleteUserData') deleteUserData:DeleteUserInput):User{
+        return this.usersService.deleteUser()
+    }
 }
