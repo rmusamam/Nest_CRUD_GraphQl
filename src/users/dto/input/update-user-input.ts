@@ -10,9 +10,9 @@ export class UpdateUserInput{
     @Field()
     @IsOptional()
     @IsNotEmpty()
-    age:number
+    age?:number
 
-    @Field()
+    @Field({nullable:true})
     @IsOptional()
     isSubscribed?:boolean
     
